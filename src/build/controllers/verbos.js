@@ -1,8 +1,7 @@
 "use strict";
-/*************************************
-* Controlador Repositório dos
-* substantivos.
-**************************************/
+/************************
+ * controlador dos verbos
+ ************************/
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -37,7 +36,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sqlite3 = __importStar(require("sqlite3"));
-class Substantivo {
+class Verbos {
     constructor(req, res) {
         this.httpRequest = req;
         this.httpResponse = res;
@@ -48,45 +47,8 @@ class Substantivo {
             }
         });
     }
-    tratarTipoConsultaSql(resultadoConsultae) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (typeof resultadoConsultae == "object") {
-                this.httpResponse.send(JSON.stringify(resultadoConsultae));
-            }
-            else if (typeof resultadoConsultae == "string") {
-                this.httpResponse.send(resultadoConsultae);
-            }
-            else {
-                this.httpResponse.send('{"erro":"resultado da consulta intratável"}');
-            }
-        });
-    }
-    todosOsSubstantivos() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.sqlite.all("SELECT * FROM substantivos", (err, linha) => {
-                if (err)
-                    throw err;
-                else
-                    this.tratarTipoConsultaSql(linha);
-            });
-        });
-    }
-    umSubstantivo() {
-        return __awaiter(this, void 0, void 0, function* () {
-            var _a;
-            const noms = (_a = this.httpRequest.query.noms) !== null && _a !== void 0 ? _a : undefined;
-            if (typeof noms == "undefined")
-                throw new Error("QUERY STRING INVÁLIDA: consulte o manual da api");
-            else if (typeof noms != "string")
-                throw new Error("QUERY STRING DE TIPO INVÁLIDO: consulte o manual da api");
-            this.sqlite.get("SELECT * FROM substantivos WHERE nomS = ?", noms, (err, linha) => {
-                if (err)
-                    throw err;
-                else
-                    this.tratarTipoConsultaSql(linha);
-            });
-        });
+    a() {
+        return __awaiter(this, void 0, void 0, function* () { });
     }
 }
-exports.default = Substantivo;
-;
+exports.default = Verbos;

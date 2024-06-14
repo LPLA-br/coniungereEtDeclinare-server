@@ -1,2 +1,8 @@
 #!/bin/bash
-../node_modules/typescript/bin/tsc
+if [[ -d './build' ]]; then
+  echo ok;
+else
+  mkdir ./build;
+fi
+
+../node_modules/typescript/bin/tsc ;
