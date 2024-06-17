@@ -5,21 +5,21 @@ import Substantivo from "../controllers/substantivo";
 const substantivos = Router();
 
 substantivos.get( "/", ( req: Request, res: Response  )=>
- {
-    try
-    {
-      const substantivo = new Substantivo( req, res );
+{
+  try
+  {
+    const substantivo = new Substantivo( req, res );
 
-      if ( Object.keys( req.query ).length == 0 )
-        substantivo.todosOsSubstantivos();
-      else
-        substantivo.umSubstantivo();
-    }
-    catch( erro )
-    {
-      res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
-    }
- });
+    if ( Object.keys( req.query ).length == 0 )
+      substantivo.todosOsSubstantivos();
+    else
+      substantivo.umSubstantivo();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
 
 
 export { substantivos };

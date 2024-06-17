@@ -5,10 +5,12 @@
 
 import express from 'express';
 import { substantivos } from './substantivos';
+import { verbos } from './verbos';
 
 const router = express.Router();
 
 router.use( "/substantivos", substantivos );
+router.use( "/verbos", verbos );
 
 router.get('/', ( req: express.Request, res: express.Response, next: express.NextFunction )=>
 {
