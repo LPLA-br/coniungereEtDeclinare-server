@@ -18,7 +18,7 @@ export default class FormatadorErro implements IFormatadorErro
     else if ( typeof erro == "string" )
       return `{"status":${codigoRespostaHttp},"mensagem":"${erro}"}`;
     else 
-      return "{}";
+      return '{"status":500,"mensagem":"FormatadorErro tipo de erro desconhecido"}';
   }
 }
 

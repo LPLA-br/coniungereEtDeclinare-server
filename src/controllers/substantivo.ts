@@ -6,18 +6,23 @@
 import * as sqlite3 from "sqlite3";
 import { Request, Response } from "express";
 
+import ITratadorConsulta from "../interfaces/TratadorConsulta";
+
 export default class Substantivo
 {
 
-  public sqlite: sqlite3.Database;
-  public httpRequest: Request;
-  public httpResponse: Response;
+  protected sqlite: sqlite3.Database;
+  protected httpRequest: Request;
+  protected httpResponse: Response;
+  protected tratadorConsultaSql: ITratadorConsulta;
+  
 
-  constructor( req: Request ,res: Response  )
+  constructor( req: Request ,res: Response, tratadorConsultaSql: ITratadorConsulta )
   {
     this.httpRequest  = req;
     this.httpResponse = res;
     this.httpResponse.setHeader( 'Access-Control-Allow-Origin', '*' );
+    this.tratadorConsultaSql = tratadorConsultaSql;
 
     this.sqlite = new sqlite3.Database( '../databases/substantivos.db', (err)=>
     {
@@ -28,28 +33,12 @@ export default class Substantivo
     });
   }
 
-  protected async tratarTipoConsultaSql( resultadoConsultae: any ): Promise<void>
-  {
-    if ( typeof resultadoConsultae == "object" )
-    {
-      this.httpResponse.send( JSON.stringify(resultadoConsultae) );
-    }
-    else if ( typeof resultadoConsultae == "string" )
-    {
-      this.httpResponse.send( resultadoConsultae );
-    }
-    else
-    {
-      this.httpResponse.send('{"erro":"resultado da consulta intratável"}');
-    }
-  }
-
   public async todosOsSubstantivos(): Promise<void>
   {
     this.sqlite.all("SELECT * FROM substantivos", (err, linha)=>
     {
       if ( err ) throw err;
-      else this.tratarTipoConsultaSql( linha );
+      else this.tratadorConsultaSql.tratarTipoConsultaSql( linha );
     });
   }
 
@@ -63,7 +52,7 @@ export default class Substantivo
     this.sqlite.get("SELECT * FROM substantivos WHERE nomS = ?", noms, (err, linha)=>
     {
       if ( err ) throw err;
-      else this.tratarTipoConsultaSql( linha );
+      else this.tratadorConsultaSql.tratarTipoConsultaSql( linha );
     });
   }
 };

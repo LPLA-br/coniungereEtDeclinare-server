@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS verbos
 (
   id INTEGER PRIMARY KEY ,
 
+  infinitivo TEXT,
   caracteristica TEXT,
   conjugacao INTEGER,
   voz_ativa INTEGER, --deponência
@@ -400,9 +401,9 @@ INSERT INTO passiva VALUES
 
 -- (caracteristica,conjugacao,ativaFK,passivaFK)
 INSERT INTO verbos VALUES
-( 0, 'regular',1 ,0,0 ),
-( 1, 'regular',2 ,1,1 ),
-( 2, 'regular',3 ,2,2 ),
-( 3, 'regular',4 ,3,3 )
+( 0, 'amare','regular',1 ,0,0 ),
+( 1, 'monére','regular',2 ,1,1 ),
+( 2, 'legere','regular',3 ,2,2 ),
+( 3, 'audire','regular',4 ,3,3 )
 ;
 

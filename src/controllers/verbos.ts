@@ -36,7 +36,7 @@ export default class Verbos
   }
 
   /** define qual verbo será usado na avaliação.
-   * retorna infinitivosPresentes e seus id's
+   *  /verbos/infinitivos
   * */
   public async obterInfinitivosAtivos(): Promise<void>
   {
@@ -52,26 +52,39 @@ export default class Verbos
     });
   }
 
-  public async obterIndicativosAtivos(): Promise<void>
+  /** retorna todos os tempos do modo indicativo da voz ativa
+   *  para um verbo indicado.
+  * /verbos/indicativoativo?infinitivo=amare */
+  public async obterIndicativoAtivo(): Promise<void>
   {
-    const {idInfinitivo} = this.httpRequest.query;
-    const consulta = "SELECT ";
+    const {infinitivo} = this.httpRequest.query;
 
-    if ( typeof idInfinitivo == "undefined" )
+    const consulta = "SELECT pessoas.* FROM verbos INNER JOIN \
+    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
+    indicativos ON ativa.indicativo = indicativos.id INNER JOIN \
+    pessoas ON indicativos.praesens = pessoas.id OR indicativos.imperfectum = pessoas.id OR \
+    indicativos.futurum = pessoas.id OR indicativos.perfectum = pessoas.id OR \
+    indicativos.plusquamperfectum = pessoas.id OR indicativos.futurumperfectum = pessoas.id \
+    WHERE verbos.infinitivo = ?"
+
+    if ( typeof infinitivo == "undefined" )
     {
       throw new Error( this.formatadorErro.obterStringJSONDoErro( 400, "bad request" ) );
     }
 
-    this.sqlite.all(consulta, (err, linhas)=>
+    this.sqlite.all(consulta, infinitivo, (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
     });
   }
 
+  /** retorna todos os tempos do modo indicativo da voz ativa
+   *  para um verbo indicado.
+  *   /verbos/subjuntivoativo?infinitivo=amare */
   public async obterSubjuntivoPassivo(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -80,7 +93,7 @@ export default class Verbos
 
   public async obterIndicativoPassivo(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -89,7 +102,7 @@ export default class Verbos
 
   public async obterSubjuntivoAtivo(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -98,7 +111,7 @@ export default class Verbos
  
   public async obterImperativo(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -107,7 +120,7 @@ export default class Verbos
 
   public async obterParticipio(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -116,7 +129,7 @@ export default class Verbos
 
   public async obterGerundio(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -125,7 +138,7 @@ export default class Verbos
 
   public async obterGerundivo(): Promise<void>
   {
-    this.sqlite.all('SELECT praesens FROM infinitivos', (err, linhas)=>
+    this.sqlite.all('', (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
