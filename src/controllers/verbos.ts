@@ -14,10 +14,11 @@ import { IFormatadorErro } from "../interfaces/FormatadorErro";
 export default class Verbos
 {
 
-  public sqlite: sqlite3.Database;
-  public httpRequest: Request;
-  public httpResponse: Response;
-  public formatadorErro: IFormatadorErro; //desacoplado
+  protected sqlite: sqlite3.Database;
+  protected httpRequest: Request;
+  protected httpResponse: Response;
+  protected formatadorErro: IFormatadorErro; //desacoplado
+  protected consultas;
 
   constructor( req: Request, res: Response, formatadorErro: IFormatadorErro )
   {
@@ -25,7 +26,7 @@ export default class Verbos
     this.httpResponse = res;
     this.httpResponse.setHeader( 'Access-Control-Allow-Origin', '*' );
 
-    this.sqlite = new sqlite3.Database( '../databases/substantivos.db', (err)=>
+    this.sqlite = new sqlite3.Database( '../databases/verbos.db', (err)=>
     {
       if ( err != null )
       {
@@ -33,6 +34,47 @@ export default class Verbos
       }
     });
     this.formatadorErro = formatadorErro;
+
+    this.consultas = {
+      infinitivosAtivos: "SELECT id, praesens FROM infinitivos",
+      indicativosAtivos: "SELECT pessoas.* FROM verbos INNER JOIN \
+    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
+    indicativos ON ativa.indicativo = indicativos.id INNER JOIN \
+    pessoas ON indicativos.praesens = pessoas.id OR indicativos.imperfectum = pessoas.id OR \
+    indicativos.futurum = pessoas.id OR indicativos.perfectum = pessoas.id OR \
+    indicativos.plusquamperfectum = pessoas.id OR indicativos.futurumperfectum = pessoas.id \
+    WHERE verbos.infinitivo = ?",
+      subjuntivosAtivos: "SELECT pessoas.* FROM verbos INNER JOIN \
+    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
+    subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN \
+    pessoas ON subjuntivos.praesens = pessoas.id \
+    OR subjuntivos.imperfectum = pessoas.id \
+    OR subjuntivos.perfectum = pessoas.id \
+    OR subjuntivos.plusquamperfectum = pessoas.id \
+    WHERE verbos.infinitivo = ?",
+      indicativosPassivos: "SELECT pessoas.* FROM verbos INNER JOIN \
+    passiva ON verbos.voz_passiva = passiva.id INNER JOIN \
+    indicativos ON passiva.indicativo = indicativos.id INNER JOIN \
+    pessoas ON indicativos.praesens = pessoas.id OR \
+    indicativos.imperfectum = pessoas.id OR \
+    indicativos.futurum = pessoas.id OR \
+    indicativos.perfectum = pessoas.id OR \
+    indicativos.plusquamperfectum = pessoas.id OR \
+    indicativos.futurumperfectum = pessoas.id \
+    WHERE verbos.infinitivo = ?"
+    };
+  }
+
+  // viola Single Responsibility (POG)
+  /** Trata query string que exige infinitivo */
+  protected tratarStringConsulta( query: any ): void
+  {
+    const { infinitivo } = query;
+    
+    if ( typeof infinitivo == "undefined" )
+    {
+      throw new Error( this.formatadorErro.obterStringJSONDoErro( 400, "bad request" ) );
+    }
   }
 
   /** define qual verbo será usado na avaliação.
@@ -40,9 +82,7 @@ export default class Verbos
   * */
   public async obterInfinitivosAtivos(): Promise<void>
   {
-    const consulta = "SELECT id, praesens FROM infinitivos WHERE voz = 'a'";
-
-    this.sqlite.all(consulta, (err, linhas)=>
+    this.sqlite.all( this.consultas.infinitivosAtivos, (err, linhas)=>
     {
       if ( err )
       {
@@ -57,22 +97,9 @@ export default class Verbos
   * /verbos/indicativoativo?infinitivo=amare */
   public async obterIndicativoAtivo(): Promise<void>
   {
-    const {infinitivo} = this.httpRequest.query;
-
-    const consulta = "SELECT pessoas.* FROM verbos INNER JOIN \
-    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
-    indicativos ON ativa.indicativo = indicativos.id INNER JOIN \
-    pessoas ON indicativos.praesens = pessoas.id OR indicativos.imperfectum = pessoas.id OR \
-    indicativos.futurum = pessoas.id OR indicativos.perfectum = pessoas.id OR \
-    indicativos.plusquamperfectum = pessoas.id OR indicativos.futurumperfectum = pessoas.id \
-    WHERE verbos.infinitivo = ?"
-
-    if ( typeof infinitivo == "undefined" )
-    {
-      throw new Error( this.formatadorErro.obterStringJSONDoErro( 400, "bad request" ) );
-    }
-
-    this.sqlite.all(consulta, infinitivo, (err, linhas)=>
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.indicativosAtivos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -82,9 +109,11 @@ export default class Verbos
   /** retorna todos os tempos do modo indicativo da voz ativa
    *  para um verbo indicado.
   *   /verbos/subjuntivoativo?infinitivo=amare */
-  public async obterSubjuntivoPassivo(): Promise<void>
+  public async obterSubjuntivoAtivo(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.subjuntivosAtivos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
@@ -93,56 +122,33 @@ export default class Verbos
 
   public async obterIndicativoPassivo(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.indicativosPassivos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
     {
       if ( err ) throw err;
       else this.httpResponse.send( linhas );
     });
   }
 
-  public async obterSubjuntivoAtivo(): Promise<void>
+  public async obterSubjuntivoPassivo(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
-    {
-      if ( err ) throw err;
-      else this.httpResponse.send( linhas );
-    });
   }
  
   public async obterImperativo(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
-    {
-      if ( err ) throw err;
-      else this.httpResponse.send( linhas );
-    });
   }
 
   public async obterParticipio(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
-    {
-      if ( err ) throw err;
-      else this.httpResponse.send( linhas );
-    });
   }
 
   public async obterGerundio(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
-    {
-      if ( err ) throw err;
-      else this.httpResponse.send( linhas );
-    });
   }
 
   public async obterGerundivo(): Promise<void>
   {
-    this.sqlite.all('', (err, linhas)=>
-    {
-      if ( err ) throw err;
-      else this.httpResponse.send( linhas );
-    });
   }
 
 }

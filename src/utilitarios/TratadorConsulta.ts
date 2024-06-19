@@ -4,8 +4,10 @@
  * devidamente
  *****************************/
 import { Request, Response } from "express";
+import ITratadorConsulta from "../interfaces/TratadorConsulta";
 
-export default class TratadorConsultaSql
+/** Trata o resultado de uma consulta sqlite */
+export default class TratadorConsultaSql implements ITratadorConsulta
 {
 
   protected httpRequest: Request;
@@ -17,7 +19,7 @@ export default class TratadorConsultaSql
     this.httpResponse = res;
   }
 
-  protected async tratarTipoConsultaSql( resultadoConsultae: any ): Promise<void>
+  public async tratarTipoConsultaSql( resultadoConsultae: any ): Promise<void>
   {
     if ( typeof resultadoConsultae == "object" )
     {
