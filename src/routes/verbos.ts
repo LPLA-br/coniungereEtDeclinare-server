@@ -61,4 +61,74 @@ verbos.get("/indicativopassivo", ( req: Request, res: Response )=>
   }
 });
 
+verbos.get("/subjuntivopassivo", ( req: Request, res: Response )=>
+{
+  const verbosController = new Verbos( req, res, new FormatadorErro() );
+
+  try
+  {
+    verbosController.obterSubjuntivoPassivo();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
+
+verbos.get("/imperativo", ( req: Request, res: Response )=>
+{
+  const verbosController = new Verbos( req, res, new FormatadorErro() );
+
+  try
+  {
+    verbosController.obterImperativo();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
+
+verbos.get("/participio", ( req: Request, res: Response )=>
+{
+  const verbosController = new Verbos( req, res, new FormatadorErro() );
+
+  try
+  {
+    verbosController.obterParticipio();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
+
+verbos.get("/gerundio", ( req: Request, res: Response )=>
+{
+  const verbosController = new Verbos( req, res, new FormatadorErro() );
+
+  try
+  {
+    verbosController.obterGerundio();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
+
+verbos.get("/gerundivo", ( req: Request, res: Response )=>
+{
+  const verbosController = new Verbos( req, res, new FormatadorErro() );
+
+  try
+  {
+    verbosController.obterGerundivo();
+  }
+  catch( erro )
+  {
+    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
+  }
+});
+
 export { verbos };

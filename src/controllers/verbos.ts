@@ -61,12 +61,35 @@ export default class Verbos
     indicativos.perfectum = pessoas.id OR \
     indicativos.plusquamperfectum = pessoas.id OR \
     indicativos.futurumperfectum = pessoas.id \
-    WHERE verbos.infinitivo = ?"
+    WHERE verbos.infinitivo = ?",
+      subjuntivosPassivos: "SELECT pessoas.* FROM verbos INNER JOIN \
+    passiva ON verbos.voz_passiva = passiva.id INNER JOIN \
+    subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN \
+    pessoas ON subjuntivos.praesens = pessoas.id OR \
+    subjuntivos.imperfectum = pessoas.id OR \
+    subjuntivos.perfectum = pessoas.id OR \
+    subjuntivos.plusquamperfectum = pessoas.id \
+    WHERE verbos.infinitivo = 'amare'",
+      imperativos: "SELECT imperativos.* FROM verbos INNER JOIN \
+    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
+    imperativos ON imperativos.id = ativa.imperativo WHERE verbos.infinitivo = ?",
+      infinitivos: "SELECT infinitivos.* FROM verbos INNER JOIN \
+    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
+    infinitivos ON infinitivos.id = ativa.infinitivo WHERE verbos.infinitivo = ?",
+      participios: "SELECT participios.* FROM verbos INNER JOIN \
+    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
+    participios ON participios.id = ativa.participio WHERE verbos.infinitivo = ?",
+      gerundios: "SELECT gerundios.* FROM verbos INNER JOIN \
+    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
+    gerundios ON gerundios.id = ativa.gerundio WHERE verbos.infinitivo = ?",
+      gerundivos: "SELECT gerundivos.* FROM verbos INNER JOIN \
+    passiva ON passiva.id = verbos.voz_passiva INNER JOIN \
+    gerundivos ON gerundivos.id = passiva.gerundivo WHERE verbos.infinitivo = ?"
     };
   }
 
   // viola Single Responsibility (POG)
-  /** Trata query string que exige infinitivo */
+  /** Trata query string que exige "infinitivo" */
   protected tratarStringConsulta( query: any ): void
   {
     const { infinitivo } = query;
@@ -133,22 +156,57 @@ export default class Verbos
 
   public async obterSubjuntivoPassivo(): Promise<void>
   {
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.indicativosPassivos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) throw err;
+      else this.httpResponse.send( linhas );
+    });
   }
  
   public async obterImperativo(): Promise<void>
   {
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.imperativos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) throw err;
+      else this.httpResponse.send( linhas );
+    });
   }
 
   public async obterParticipio(): Promise<void>
   {
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.participios,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) throw err;
+      else this.httpResponse.send( linhas );
+    });
   }
 
   public async obterGerundio(): Promise<void>
   {
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.gerundios,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) throw err;
+      else this.httpResponse.send( linhas );
+    });
   }
 
   public async obterGerundivo(): Promise<void>
   {
+    this.tratarStringConsulta( this.httpRequest.query );
+    this.sqlite.all( this.consultas.gerundivos,
+                    this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) throw err;
+      else this.httpResponse.send( linhas );
+    });
   }
 
 }
