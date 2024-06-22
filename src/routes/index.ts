@@ -9,12 +9,12 @@ import { verbos } from './verbos';
 
 const router = express.Router();
 
-router.use( "/substantivos", substantivos );
+router.use( "/nome", substantivos );
 router.use( "/verbos", verbos );
 
 router.get('/', ( req: express.Request, res: express.Response, next: express.NextFunction )=>
 {
-  res.send( "API v0.0.1 substantivos e verbos somente leitura\n" );
+  res.send( "API v0.2.6-alpha\n" );
 });
 
 export { router };

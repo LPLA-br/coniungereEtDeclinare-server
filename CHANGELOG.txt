@@ -1,0 +1,15 @@
+
+
+############## v0.2.X ##############
+
+  res.send() alterado para res.json() no servidor (evita erros de JSON.parse no cliente) 0.2.1
+  Padroniza formato da mensagem para evitar problemas no cliente                         0.2.2
+
+    {"status": 200, "res": {...} }
+    {"status":500, "msg": Error.message}  
+
+  Correção do fluxo de erros e excessões.Corrige a forma como o servidor emite erros     0.2.3
+  Correção de morte do servidor quando palavra não existente é consultada                0.2.4
+  Refatora forma de lidar com query strings                                              0.2.5
+  Corrige problema com logging de stout no terminal executante                           0.2.6
+

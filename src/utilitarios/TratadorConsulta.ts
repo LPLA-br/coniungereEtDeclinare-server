@@ -19,19 +19,20 @@ export default class TratadorConsultaSql implements ITratadorConsulta
     this.httpResponse = res;
   }
 
+  /** Emite objeto de consulta ou de erro */
   public async tratarTipoConsultaSql( resultadoConsultae: any ): Promise<void>
   {
     if ( typeof resultadoConsultae == "object" )
     {
-      this.httpResponse.send( JSON.stringify(resultadoConsultae) );
+      this.httpResponse.json( { status: 200,res: resultadoConsultae } );
     }
     else if ( typeof resultadoConsultae == "string" )
     {
-      this.httpResponse.send( resultadoConsultae );
+      this.httpResponse.json( {status: 200, res: resultadoConsultae } );
     }
     else
     {
-      this.httpResponse.send('{"status":500,"erro":"resultado da consulta intratável"}');
+      this.httpResponse.json( {status:500,erro:"resultado da consulta sql não é um objeto tratável"} );
     }
   }
 }

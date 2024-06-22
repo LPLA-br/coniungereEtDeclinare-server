@@ -11,14 +11,15 @@ export default class FormatadorErro implements IFormatadorErro
   constructor()
   {}
 
-  public obterStringJSONDoErro( codigoRespostaHttp: number, erro: Error | string ): string
+  /** retorna string JSON com detalhes de erro HTTP semântico */
+  public obterStringJSONDoErro( codigoRespostaHttp: number, erro: Error | string ): object
   {
     if ( typeof erro == "object" )
-      return `{"status":${codigoRespostaHttp},"mensagem":"${erro.message}"}`;
+      return {"status":`${codigoRespostaHttp}`,"msg":`${erro.message}`};
     else if ( typeof erro == "string" )
-      return `{"status":${codigoRespostaHttp},"mensagem":"${erro}"}`;
+      return {"status":`${codigoRespostaHttp}`,"msg":`${erro}`};
     else 
-      return '{"status":500,"mensagem":"FormatadorErro tipo de erro desconhecido"}';
+      return {"status":500,"mensagem":"FormatadorErro tipo de erro desconhecido"};
   }
 }
 

@@ -1,6 +1,6 @@
 
 export interface IFormatadorErro
 {
-  obterStringJSONDoErro( codigoRespostaHttp: number, erro: Error | string ): string;
+  obterStringJSONDoErro( codigoRespostaHttp: number, erro: Error | string ): object;
 };
 
