@@ -401,9 +401,9 @@ INSERT INTO passiva VALUES
 
 -- (caracteristica,conjugacao,ativaFK,passivaFK)
 INSERT INTO verbos VALUES
-( 0, 'amare','regular',1 ,0,0 ),
+( 0, 'amáre','regular',1 ,0,0 ),
 ( 1, 'monére','regular',2 ,1,1 ),
 ( 2, 'legere','regular',3 ,2,2 ),
-( 3, 'audire','regular',4 ,3,3 )
+( 3, 'audíre','regular',4 ,3,3 )
 ;
 

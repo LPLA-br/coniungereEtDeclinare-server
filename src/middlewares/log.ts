@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-const log = ( req: Request, res: Response, next: NextFunction ) =>
+export default ( req: Request, res: Response, next: NextFunction ) =>
 {
-  console.log( `{"timestamp":${Date.now()},"ip":"${req.ip}","path":"${req.path}"},\n` ); 
+  console.log( `{"timestamp":${Date.now()},"ipRequisitante":"${req.ip}","path":"${req.path}"},` ); 
   next();
 };
 
-export default { log };

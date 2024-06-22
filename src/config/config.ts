@@ -12,7 +12,9 @@ const PORTA = 8080;
 
 //rotas
 import { router } from '../routes/index';
+import log from '../middlewares/log';
 
+router.use( log );
 app.use( '/', router );
 
 // tratamento de url do express

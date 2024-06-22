@@ -2,24 +2,21 @@ import { Router } from "express";
 import { Request, Response } from "express";
 import Substantivo from "../controllers/substantivo";
 import TratadorConsultaSql from "../utilitarios/TratadorConsulta";
+import FormatadorErro from "../utilitarios/FormatadorErro";
+import substativosQuery from "../middlewares/substativosQuery";
 
 const substantivos = Router();
 
-substantivos.get( "/", ( req: Request, res: Response  )=>
+substantivos.get( "/substantivos", ( req: Request, res: Response  )=>
 {
-  try
-  {
-    const substantivo = new Substantivo( req, res, new TratadorConsultaSql( req, res ) );
+  const substantivo = new Substantivo( req, res, new TratadorConsultaSql( req, res ), new FormatadorErro());
+  substantivo.todosOsSubstantivos();
+});
 
-    if ( Object.keys( req.query ).length == 0 )
-      substantivo.todosOsSubstantivos();
-    else
-      substantivo.umSubstantivo();
-  }
-  catch( erro )
-  {
-    res.status(500).send( `{"erro":"${JSON.stringify( erro )}"}` );
-  }
+substantivos.get( "/substantivo", substativosQuery, ( req: Request, res: Response  )=>
+{
+  const substantivo = new Substantivo( req, res, new TratadorConsultaSql( req, res ), new FormatadorErro());
+  substantivo.umSubstantivo(); 
 });
 
 
