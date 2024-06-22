@@ -14,7 +14,7 @@ router.use( "/verbos", verbos );
 
 router.get('/', ( req: express.Request, res: express.Response, next: express.NextFunction )=>
 {
-  res.send( "API v0.2.4-alpha\n" );
+  res.send( "API v0.2.6-alpha\n" );
 });
 
 export { router };

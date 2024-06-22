@@ -3,7 +3,8 @@
 Servidor para aplicação de exercícios de morfologia latina
 coniungere et declinare.
 
-0.2.?-alpha
+0.2.6-alpha
+
 - Os quatro verbos regulares amare, monere, legere e dormire.
 - Acentuação de Macron inclusa através do sinal (´).
 - Não pluralização de nomes próprios de lugares ou pessoas.
@@ -22,6 +23,8 @@ NOTAS:
 Atenção ao fazer requisição para palavras com (´)
 pois elas deverão ser encodificadas na URI
 EXEMPLO: leó  torna-se  le%C3%B3
+
+"Axios" é uma dependência de testes e pode ser ignorada.
 
 Proximas versões lançáturas encaminhar-se-ão brevemente.
 

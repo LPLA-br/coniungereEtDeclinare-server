@@ -4,8 +4,7 @@
  * validando 0.2.0-alpha
  ***************************/
 
-// MÉTRICAS AVALIADAS
-// sanidade dos dados
+const axios = require('axios');
 
 const substantivos = [ "rosa","insula","Iulia","equus","puer",
 "verbum","poculum","Marcus","humus","portus","domus","cornú","sól","Caesar",
@@ -13,39 +12,62 @@ const substantivos = [ "rosa","insula","Iulia","equus","puer",
 "mare","animal","diés","res"
 ];
 
-fetch('http://127.0.0.1:8080/nomes/substantivos/')
-.then( (res)=>
-{
-  console.log( '\n', res.json(), '\n' );
-}).catch( (err)=>{ console.error( err ) });
-
-for ( let i = 0; i < substantivos.length; i++ )
-{
-  fetch(`http://127.0.0.1:8080/nomes/substantivo?noms=${substantivos[i]}`)
-  .then( (res)=>
-  {
-    console.log( '\n', res.json(), '\n' );
-  }).catch( (err)=>{ console.error( err ) });
-}
-
-const verbo = 'amare';
-const recursos = [ "infinitivos", "indicativoativo", "subjuntivoativo",
+const verbo = 'amáre';
+const recursos = [ "indicativoativo", "subjuntivoativo",
   "indicativopassivo","subjuntivopassivo","imperativo","participio",
   "gerundio","gerundivo"
 ];
 
-function verbRequest( urn, verbo )
+(async()=>
 {
-  fetch( `http://127.0.0.1:8080/verbos/${urn}?infinitivo=${verbo}` )
-  .then( (res)=>
-  {
-    console.log( '\n', res.json() ,'\n' );
+  await axios.get('http://127.0.0.1:8080/nome/substantivos/')
+  .then(function (response) {
+    console.log(response.data);
   })
-  .catch( (err)=>{ console.error( err ) });
-}
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+  });
 
-for ( let i = 0; i < substantivos.length; i++ )
+  for ( let i = 0; i < substantivos.length; i++ )
+  {
+    await axios.get(encodeURI(`http://127.0.0.1:8080/nome/substantivo?noms=${substantivos[i]}`))
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+    });
+  }
+
+})();
+
+(async()=>
 {
-  verbRequest( recursos[i], "amare" );
-}
+  await axios.get(encodeURI(`http://127.0.0.1:8080/verbos/infinitivos`))
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+  });
+
+  for ( let i = 0; i < recursos.length; i++ )
+  {
+    await axios.get(encodeURI(`http://127.0.0.1:8080/verbos/${recursos[i]}?infinitivo=${verbo}`))
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+    });
+  }  
+})();
 
