@@ -44,7 +44,7 @@ export default class Verbos
     this.tratadorConsulta = tratadorConsulta;
 
     this.consultas = {
-      infinitivosAtivos: "SELECT id, praesens FROM infinitivos",
+      infinitivosAtivos: "SELECT id, praesens, voz FROM infinitivos",
       indicativosAtivos: "SELECT pessoas.* FROM verbos INNER JOIN \
     ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
     indicativos ON ativa.indicativo = indicativos.id INNER JOIN \
