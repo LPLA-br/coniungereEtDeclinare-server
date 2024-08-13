@@ -5,16 +5,16 @@ CREATE TABLE IF NOT EXISTS substantivos
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   genero CHAR,
-  caso INT,
+  declinacao INT,
   nomS TEXT, genS TEXT, datS TEXT, acuS TEXT, ablS TEXT, locS TEXT, vocS TEXT,
   nomP TEXT, genP TEXT, datP TEXT, acuP TEXT, ablP TEXT, locP TEXT, vocP TEXT,
   CONSTRAINT genero CHECK ( genero = 'f' OR genero = 'm' OR genero = 'n' ),
-  CONSTRAINT caso CHECK ( caso > 0 AND caso < 6 )
+  CONSTRAINT declinacao CHECK ( declinacao > 0 AND declinacao < 6 )
 );
 
   
 -- substantivos selecionados de acordo com suas caracteristicas
-INSERT INTO substantivos( genero,caso,nomS,genS,datS,acuS,ablS,locS,vocS,nomP,genP,datP,acuP,ablP,locP,vocP  ) VALUES
+INSERT INTO substantivos( genero,declinacao,nomS,genS,datS,acuS,ablS,locS,vocS,nomP,genP,datP,acuP,ablP,locP,vocP  ) VALUES
 ('f', 1
     ,'rosa', 'rosae',  'rosae','rosam','rosá','-','-'
     ,'rosae','rosárum','rosís','rosás','rosís','-', '-'),
