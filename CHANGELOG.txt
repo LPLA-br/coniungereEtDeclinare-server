@@ -12,4 +12,8 @@
   Correção de morte do servidor quando palavra não existente é consultada                0.2.4
   Refatora forma de lidar com query strings                                              0.2.5
   Corrige problema com logging de stout no terminal executante                           0.2.6
+  Corrige nome de campo "caso" para "declinação"                                         0.2.7
+  Inclusão do campo "declinação" na resposta para um substantivos.                       0.2.8
+  Adiciona campo "voz" na resposta para requisição de infinitvo dos verbos               0.2.9
+                                                                                         0.2.10
 

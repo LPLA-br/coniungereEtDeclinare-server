@@ -16,112 +16,112 @@ CREATE TABLE IF NOT EXISTS substantivos
 -- substantivos selecionados de acordo com suas caracteristicas
 INSERT INTO substantivos( genero,declinacao,nomS,genS,datS,acuS,ablS,locS,vocS,nomP,genP,datP,acuP,ablP,locP,vocP  ) VALUES
 ('f', 1
-    ,'rosa', 'rosae',  'rosae','rosam','rosá','-','-'
-    ,'rosae','rosárum','rosís','rosás','rosís','-', '-'),
+    ,'rosa', 'rosae',  'rosae','rosam','rosā','-','-'
+    ,'rosae','rosārum','rosīs','rosās','rosīs','-', '-'),
 
 ('f', 1
-    ,'insula', 'insulae',  'insulae','insulam','insulá','insulae','-'
-    ,'insulae','insulárum','insulís','insulás','insulís','-', '-'),
+    ,'insula', 'insulae',  'insulae','insulam','insulā','insulae','-'
+    ,'insulae','insulārum','insulīs','insulās','insulīs','-', '-'),
 
 ('f', 1
-    ,'Iulia', 'Iuliae',  'Iuliae','Iuliam','Iuliá','-','Iulia'
+    ,'Iulia', 'Iuliae',  'Iuliae','Iuliam','Iuliā','-','Iulia'
     ,'-','-','-','-','-','-', '-'),
 
 ('m', 2
-    ,'equus', 'equí', 'equó', 'equum', 'equó', '-', '-'
-    ,'equí', 'equórum', 'equís', 'equós', 'equís', '-', '-'),
+    ,'equus', 'equī', 'equō', 'equum', 'equō', '-', '-'
+    ,'equī', 'equōrum', 'equīs', 'equōs', 'equīs', '-', '-'),
 
 ('m', 2
-    ,'puer', 'puerí', 'pueró', 'puerum', 'pueró', '-', '-'
-    ,'puerí', 'puerórum', 'puerís', 'puerós', 'puerís', '-', '-'),
+    ,'puer', 'puerī', 'puerō', 'puerum', 'puerō', '-', '-'
+    ,'puerī', 'puerōrum', 'puerīs', 'puerōs', 'puerīs', '-', '-'),
 
 ('n', 2
-    ,'verbum', 'verbí', 'verbó', 'verbum', 'verbó', '-', '-'
-    ,'verba', 'verbórum', 'verbís', 'verba', 'verbís', '-', '-'),
+    ,'verbum', 'verbī', 'verbō', 'verbum', 'verbō', '-', '-'
+    ,'verba', 'verbōrum', 'verbīs', 'verba', 'verbīs', '-', '-'),
 
 ('n', 2
-    ,'poculum', 'poculí', 'poculó', 'poculum', 'poculó', '-', '-'
-    ,'pocula', 'poculórum', 'poculís', 'pocula', 'poculís', '-', '-'),
+    ,'poculum', 'poculī', 'poculō', 'poculum', 'poculō', '-', '-'
+    ,'pocula', 'poculōrum', 'poculīs', 'pocula', 'poculīs', '-', '-'),
 
 ('m', 2
-    ,'Marcus', 'Marcí', 'Marcó', 'Marcum', 'Marcó', '-', 'Marce'
+    ,'Marcus', 'Marcī', 'Marcō', 'Marcum', 'Marcō', '-', 'Marce'
     ,'-', '-', '-', '-', '-', '-', '-'),
 
 ('f', 2
-    ,'humus', 'humí', 'humó', 'humum', 'humó', '-', '-'
-    ,'humí', 'humórum', 'humís', 'humós', 'humís', '-', '-'),
+    ,'humus', 'humī', 'humō', 'humum', 'humō', '-', '-'
+    ,'humī', 'humōrum', 'humīs', 'humōs', 'humīs', '-', '-'),
 
 ('m', 4
-    ,'portus','portús','portuí','portum','portú','portús','-'
-    ,'portús','portuum','portibus','portús','portibus','-','-'),
+    ,'portus','portūs','portuī','portum','portū','portūs','-'
+    ,'portūs','portuum','portibus','portūs','portibus','-','-'),
 
 ('m', 4
-    ,'domus','domús','domuí','domum','domú','domús','-'
-    ,'domús','domuum','domibus','domús','domibus','-','-'),
+    ,'domus','domūs','domuī','domum','domū','domūs','-'
+    ,'domūs','domuum','domibus','domūs','domibus','-','-'),
 
 ('n', 4
-    ,'cornú','cornús','cornú',     'cornú','cornú','cornú','-'
-    ,'cornúa','cornuum','cornibus','cornúa','cornibus','-','-'),
+    ,'cornū','cornūs','cornū',     'cornū','cornū','cornū','-'
+    ,'cornūa','cornuum','cornibus','cornūa','cornibus','-','-'),
 
 ('m', 3
-    ,'sól','sólis','sólí','sólem','sóle','-','-'
-    ,'sólés','sólum','sólibus','sólés','sólibus','-','-'),
+    ,'sōl','sōlis','sōlī','sōlem','sōle','-','-'
+    ,'sōlēs','sōlum','sōlibus','sōlēs','sōlibus','-','-'),
 
 ('m', 3
-    ,'Caesar','Caesaris','Caesarí','Caesarem','Caesare','-','Caesar'
+    ,'Caesar','Caesaris','Caesarī','Caesarem','Caesare','-','Caesar'
     ,'-', '-', '-', '-', '-', '-', '-'),
 
 ('m', 3
-    ,'leó','leónis','leóní','leónem','leóne','-','-'
-    ,'leónés','leónum','leónibus','leónés','leónibus','-','-'),
+    ,'leō','leōnis','leōnī','leōnem','leōne','-','-'
+    ,'leōnēs','leōnum','leōnibus','leōnēs','leōnibus','-','-'),
 
 ('f', 3
-    ,'vóx','vócis','vócí','vócem','vóce','-','-'
-    ,'vócés','vócum','vócibus','vócés','vócibus','-','-'),
+    ,'vōx','vōcis','vōcī','vōcem','vōce','-','-'
+    ,'vōcēs','vōcum','vōcibus','vōcēs','vōcibus','-','-'),
 
 ('n', 3
-    ,'ós','óris','órí','ós','óre','-','-'
-    ,'óra','órum','óribus','óra','óribus','-','-'),
+    ,'ōs','ōris','ōrī','ōs','ōre','-','-'
+    ,'ōra','ōrum','ōribus','ōra','ōribus','-','-'),
 
 ('n', 3
-    ,'corpus','corporis','corporí','corpus','corpore','-','-'
+    ,'corpus','corporis','corporī','corpus','corpore','-','-'
     ,'corpora','corporum','corporibus','corpora','corporibus','-','-'),
 
 ('n', 3
-    ,'opus','operis','operí','opus','opere','-','-'
+    ,'opus','operis','operī','opus','opere','-','-'
     ,'opera','operum','operibus','opera','operibus','-','-'),
 
 ('n', 3
-    ,'nómen','nóminis','nóminí','nómen','nómine','-','-'
-    ,'nómina','nóminum','nóminibus','nómina','nóminibus','-','-'),
+    ,'nōmen','nōminis','nōminī','nōmen','nōmine','-','-'
+    ,'nōmina','nōminum','nōminibus','nōmina','nōminibus','-','-'),
 
 ('f', 3
-    ,'návis','návis','náví','návem','náve','-','-'
-    ,'návés','návium','návibus','návés','návibus','-','-'),
+    ,'nāvis','nāvis','nāvī','nāvem','nāve','-','-'
+    ,'nāvēs','nāvium','nāvibus','nāvēs','nāvibus','-','-'),
 
 ('f', 3
-    ,'urbis','urbis','urbí','urbem','urbe','-','-'
-    ,'urbés','urbium','urbibus','urbés','urbibus','-','-'),
+    ,'urbis','urbis','urbī','urbem','urbe','-','-'
+    ,'urbēs','urbium','urbibus','urbēs','urbibus','-','-'),
 
 ('m', 3
-    ,'móns','montis','montí','montem','monte','-','-'
-    ,'montés','montium','montibus','montés','montibus','-','-'),
+    ,'mōns','montis','montī','montem','monte','-','-'
+    ,'montēs','montium','montibus','montēs','montibus','-','-'),
 
 ('n', 3
-    ,'mare','maris','marí','mare','marí','-','-'
+    ,'mare','maris','marī','mare','marī','-','-'
     ,'maria','marium','maribus','maria','maribus','-','-'),
 
 ('n', 3
-    ,'animal','animális','animálí','animal','animálí','-','-'
-    ,'animalia','animálium','animálibus','animalia','animálibus','-','-'),
+    ,'animal','animālis','animālī','animal','animālī','-','-'
+    ,'animalia','animālium','animālibus','animalia','animālibus','-','-'),
 
 ('f', 5
-    ,'diés','diéí','diéí','diem','die','-','-'
-    ,'diés','diérum','diébus','diés','diébus','-','-'),
+    ,'diēs','diēī','diēī','diem','die','-','-'
+    ,'diēs','diērum','diēbus','diēs','diēbus','-','-'),
 
 ('f', 5
-    ,'res','reí','reí','rem','re','-','-'
-    ,'rés','rérum','rébus','rés','rébus','-','-'),
+    ,'res','reī','reī','rem','re','-','-'
+    ,'rēs','rērum','rēbus','rēs','rēbus','-','-'),
 
 ('f', 1
     ,'','','','','','',''
