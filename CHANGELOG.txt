@@ -15,5 +15,5 @@
   Corrige nome de campo "caso" para "declinação"                                         0.2.7
   Inclusão do campo "declinação" na resposta para um substantivos.                       0.2.8
   Adiciona campo "voz" na resposta para requisição de infinitvo dos verbos               0.2.9
-                                                                                         0.2.10
+  Altera estrutura de diretórios do projeto para Implantação docker facilitada           0.2.10
 

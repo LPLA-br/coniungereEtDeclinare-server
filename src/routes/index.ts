@@ -14,7 +14,10 @@ router.use( "/verbos", verbos );
 
 router.get('/', ( req: express.Request, res: express.Response, next: express.NextFunction )=>
 {
-  res.send( "API v0.2.6-alpha\n" );
+  if ( typeof process.env.VERSAO == "string" )
+    res.send( `API ${process.env.VERSAO}\n` );
+  else
+    res.send( "API versão indisponível" );
 });
 
 export { router };
