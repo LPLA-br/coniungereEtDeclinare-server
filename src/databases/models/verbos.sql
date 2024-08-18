@@ -182,109 +182,109 @@ CREATE TABLE IF NOT EXISTS verbos
   )
 );
 
---amáre i,s,i,s
+--amāre i,s,i,s
 INSERT INTO pessoas VALUES
-( 0,'amó','amas','amat','amámus','amátis','amant' ),
-( 1,'amábam','amábas','amábat','amabamus','amabatis','amábant'),
-( 2,'amábo','amábis','amábit','amabimus','amabitis','amábunt'),
-( 3,'amavi','amavistí','amavit','amavimus','amavistis','amávérunt'),
-( 4,'amaveram','amaveras','amaverat','amaverámus','amaverátis','amaverant'),
+( 0,'amō','amas','amat','amāmus','amātis','amant' ),
+( 1,'amābam','amābas','amābat','amabamus','amabatis','amābant'),
+( 2,'amābo','amābis','amābit','amabimus','amabitis','amābunt'),
+( 3,'amavi','amavistī','amavit','amavimus','amavistis','amāvērunt'),
+( 4,'amaveram','amaveras','amaverat','amaverāmus','amaverātis','amaverant'),
 ( 5,'amavero','amaveris','amaverit','amaverimus','amaveritis','amaverint'),
 
-( 6,'amem','ames','amet','amémus','amétis','ament' ),
-( 7,'amárem','amáres','amáret','amarémus','amarétis','amarent' ),
+( 6,'amem','ames','amet','amēmus','amētis','ament' ),
+( 7,'amārem','amāres','amāret','amarēmus','amarētis','amarent' ),
 ( 8,'amaverim','amaveris','amaverit','amaverimus','amaveritis','amaverint' ),
-( 9,'amavissem','amavisses','amavisset','amavissémus','amavissétis','amavissent' ),
+( 9,'amavissem','amavisses','amavisset','amavissēmus','amavissētis','amavissent' ),
 
-(10,'amor','amáris','amátur','amámur','amáminí','amantur'),
-(11,'amábar','amábáris','amábátur','amábámur','amábáminí','amábantur' ),
-(12,'amábor','amáberis','amábitur','amábimur','amábiminí','amábuntur' ),
-(13,'amátus sum','amátus es','amátus est','amátí sumus','amátí estis','amátí sunt' ),
-(14,'amátus eram','amátus erás','amátus erat','amátí erámus','amátí erátis','amátí erant' ),
-(15,'amátus eró','amátus eris','amátus erit','amátí erimus','amátí eritis','amátí erunt' ),
+(10,'amor','amāris','amātur','amāmur','amāminī','amantur'),
+(11,'amābar','amābāris','amābātur','amābāmur','amābāminī','amābantur' ),
+(12,'amābor','amāberis','amābitur','amābimur','amābiminī','amābuntur' ),
+(13,'amātus sum','amātus es','amātus est','amātī sumus','amātī estis','amātī sunt' ),
+(14,'amātus eram','amātus erās','amātus erat','amātī erāmus','amātī erātis','amātī erant' ),
+(15,'amātus erō','amātus eris','amātus erit','amātī erimus','amātī eritis','amātī erunt' ),
 
-(16,'amer','améris','amétur','amémur','améminí','amentur'),
-(17,'amárer','amáréris','amárétur','amarémur','amaréminí','amarentur' ),
-(18,'amátus sim','amátus sís','amátus sit','amátí símus','amátí sítis','amátí sint' ),
-(19,'amátus essem','amátus essés','amátus esset','amátí essémus','amátí essétis','amátí essent' )
+(16,'amer','amēris','amētur','amēmur','amēminī','amentur'),
+(17,'amārer','amārēris','amārētur','amarēmur','amarēminī','amarentur' ),
+(18,'amātus sim','amātus sīs','amātus sit','amātī sīmus','amātī sītis','amātī sint' ),
+(19,'amātus essem','amātus essēs','amātus esset','amātī essēmus','amātī essētis','amātī essent' )
 ;
 
 INSERT INTO pessoas VALUES
-( 20,'moneó','monés','monet','monémus','monétis','monent' ),
-( 21,'monébam','monébas','monébat','monébamus','monébatis','monébant' ),
-( 22,'monébo','monébis','monébit','monébimus','monébitis','monébunt' ),
-( 23,'monuí','monuistí','monuit','monuimus','monuistis','monuérunt' ),
+( 20,'moneō','monēs','monet','monēmus','monētis','monent' ),
+( 21,'monēbam','monēbas','monēbat','monēbamus','monēbatis','monēbant' ),
+( 22,'monēbo','monēbis','monēbit','monēbimus','monēbitis','monēbunt' ),
+( 23,'monuī','monuistī','monuit','monuimus','monuistis','monuērunt' ),
 ( 24,'monueram','monueras','monuerat','monueramus','monueratis','monuerant' ),
-( 25,'monueró','monueris','monuerit','monuerimus','monueritis','monuerint' ),
+( 25,'monuerō','monueris','monuerit','monuerimus','monueritis','monuerint' ),
 
-( 26,'moneam','moneás','moneat','moneamus','moneátis','moneant' ),
-( 27,'monérem','monéres','monéret','monérémus','monérétis','monérent' ),
+( 26,'moneam','moneās','moneat','moneamus','moneātis','moneant' ),
+( 27,'monērem','monēres','monēret','monērēmus','monērētis','monērent' ),
 ( 28,'monuerim','monueris','monuerit','monuerimus','monueritis','monuerint' ),
-( 29,'monuissem','monuissés','monuisset','monuissémus','monuissétis','monuissent' ),
+( 29,'monuissem','monuissēs','monuisset','monuissēmus','monuissētis','monuissent' ),
       
-( 30,'moneor','monéris','monétur','monémur','monéminí','monentur' ),
-( 31,'monébar','monébáris','monébátur','monébámur','monébáminí','monébantur' ),
-( 32,'monébor','monéberis','monébitur','monébimur','monébiminí','monébuntur' ),
-( 33,'monitus sum','monitus es','monitus est','monití sumus','monití estis','monití sunt' ),
-( 34,'monitus eram','monitus erás','monitus erat','monití erámus','monití erátis','monití erant' ),
-( 35,'monitus eró','monitus eris','monitus erit','monití erimus','monití eritis','monití erunt' ),
+( 30,'moneor','monēris','monētur','monēmur','monēminī','monentur' ),
+( 31,'monēbar','monēbāris','monēbātur','monēbāmur','monēbāminī','monēbantur' ),
+( 32,'monēbor','monēberis','monēbitur','monēbimur','monēbiminī','monēbuntur' ),
+( 33,'monitus sum','monitus es','monitus est','monitī sumus','monitī estis','monitī sunt' ),
+( 34,'monitus eram','monitus erās','monitus erat','monitī erāmus','monitī erātis','monitī erant' ),
+( 35,'monitus erō','monitus eris','monitus erit','monitī erimus','monitī eritis','monitī erunt' ),
 
-( 36,'monear','moneáris','moneátur','moneámur','moneáminí','moneantur' ),
-( 37,'monéreor','monéréris','monérétur','monérémus','monéréminí','monérentur' ),
-( 38,'monitus sim','monitus sís','monitus sit','monití símus','monití sítis','monití sint' ),
-( 39,'monitus essem','monitus essés','monitus esset','monití essémus','monití essétis','monití essent' )
+( 36,'monear','moneāris','moneātur','moneāmur','moneāminī','moneantur' ),
+( 37,'monēreor','monērēris','monērētur','monērēmus','monērēminī','monērentur' ),
+( 38,'monitus sim','monitus sīs','monitus sit','monitī sīmus','monitī sītis','monitī sint' ),
+( 39,'monitus essem','monitus essēs','monitus esset','monitī essēmus','monitī essētis','monitī essent' )
 ;
 
 INSERT INTO pessoas VALUES
-( 40,'legó','legis','legit','legimus','legitis','legunt' ),
-( 41,'légebam','légébas','légebat','légébamus','légébatis','légebant' ),
-( 42,'legam','legés','leget','legémus','legétis','legent' ),
-( 43,'légí','légistí','légit','légimus','légistis','légérunt' ),
-( 44,'légeram','légeras','légerat','légerámus','légerátis','légerant' ),
-( 45,'légeró','légeris','légerit','légerimus','légeritis','légerint' ),
+( 40,'legō','legis','legit','legimus','legitis','legunt' ),
+( 41,'lēgebam','lēgēbas','lēgebat','lēgēbamus','lēgēbatis','lēgebant' ),
+( 42,'legam','legēs','leget','legēmus','legētis','legent' ),
+( 43,'lēgī','lēgistī','lēgit','lēgimus','lēgistis','lēgērunt' ),
+( 44,'lēgeram','lēgeras','lēgerat','lēgerāmus','lēgerātis','lēgerant' ),
+( 45,'lēgerō','lēgeris','lēgerit','lēgerimus','lēgeritis','lēgerint' ),
 
-( 46,'legam','legás','legat','legámus','legátis','legant'),
-( 47,'legerem','legerés','legeret','legerémus','legerétis','legerent' ),
-( 48,'légerim','légeris','légerit','légerimus','légeritis','légerint' ),
-( 49,'légissem','légissés','légisset','légissémus','légissétis','légissent' ),
+( 46,'legam','legās','legat','legāmus','legātis','legant'),
+( 47,'legerem','legerēs','legeret','legerēmus','legerētis','legerent' ),
+( 48,'lēgerim','lēgeris','lēgerit','lēgerimus','lēgeritis','lēgerint' ),
+( 49,'lēgissem','lēgissēs','lēgisset','lēgissēmus','lēgissētis','lēgissent' ),
 
-( 50,'legor','legeris','legitur','legimur','legiminí','leguntur' ),
-( 51,'legebar','legebáris','legebátur','legebámur','legebáminí','legebantur' ),
-( 52,'legar','legéris','legétur','legémur','legéminí','legentur' ),
-( 53,'lectus sum','lectus es','lectus est','léctí sumus','léctí estis','léctí sunt' ),
-( 54,'lectus eram','lectus erás','lectus erat','léctí erámus','léctí erátis','léctí erant' ),
-( 55,'lectus eró','lectus eris','lectus erit','léctí erimus','léctí eritis','léctí erunt' ),
+( 50,'legor','legeris','legitur','legimur','legiminī','leguntur' ),
+( 51,'legebar','legebāris','legebātur','legebāmur','legebāminī','legebantur' ),
+( 52,'legar','legēris','legētur','legēmur','legēminī','legentur' ),
+( 53,'lectus sum','lectus es','lectus est','lēctī sumus','lēctī estis','lēctī sunt' ),
+( 54,'lectus eram','lectus erās','lectus erat','lēctī erāmus','lēctī erātis','lēctī erant' ),
+( 55,'lectus erō','lectus eris','lectus erit','lēctī erimus','lēctī eritis','lēctī erunt' ),
 
-( 56,'legar','legáris','legátur','legámur','legáminí','legantur' ),
-( 57,'legerer','legeréris','legerétur','legerémur','legeréminí','legerentur'),
-( 58,'léctus sim','léctus sís','léctus sit','léctí símus','léctí sítis','léctí sint' ),
-( 59,'léctus essem','léctus essés','léctus esset','léctí essémus','léctí essétis','léctí essent' )
+( 56,'legar','legāris','legātur','legāmur','legāminī','legantur' ),
+( 57,'legerer','legerēris','legerētur','legerēmur','legerēminī','legerentur'),
+( 58,'lēctus sim','lēctus sīs','lēctus sit','lēctī sīmus','lēctī sītis','lēctī sint' ),
+( 59,'lēctus essem','lēctus essēs','lēctus esset','lēctī essēmus','lēctī essētis','lēctī essent' )
 ;
 
 INSERT INTO pessoas VALUES
-( 60,'audió','audís','audit','audíimus','audítis','audiunt' ),
-( 61,'audiebam','audiébas','audiebat','audiébamus','audiébatis','audiebant' ),
-( 62,'audiam','audiés','audiet','audiémus','audiétis','audient' ),
-( 63,'audíví','audívistí','audívit','audívimus','audívistis','audívérunt' ),
-( 64,'audíveram','audíveras','audíverat','audíverámus','audíverátis','audíverant' ),
-( 65,'audíveró','audíveris','audíverit','audíverimus','audíveritis','audíverint' ),
+( 60,'audiō','audīs','audit','audīimus','audītis','audiunt' ),
+( 61,'audiebam','audiēbas','audiebat','audiēbamus','audiēbatis','audiebant' ),
+( 62,'audiam','audiēs','audiet','audiēmus','audiētis','audient' ),
+( 63,'audīvī','audīvistī','audīvit','audīvimus','audīvistis','audīvērunt' ),
+( 64,'audīveram','audīveras','audīverat','audīverāmus','audīverātis','audīverant' ),
+( 65,'audīverō','audīveris','audīverit','audīverimus','audīveritis','audīverint' ),
 
-( 66,'audiam','audiás','audiat','audiámus','audiátis','audiant'),
-( 67,'audírem','audírés','audíret','audírémus','audírétis','audírent' ),
-( 68,'audíverim','audíveris','audíverit','audíverimus','audíveritis','audíverint' ),
-( 69,'audívissem','audívissés','audívisset','audívissémus','audívissétis','audívissent' ),
+( 66,'audiam','audiās','audiat','audiāmus','audiātis','audiant'),
+( 67,'audīrem','audīrēs','audīret','audīrēmus','audīrētis','audīrent' ),
+( 68,'audīverim','audīveris','audīverit','audīverimus','audīveritis','audīverint' ),
+( 69,'audīvissem','audīvissēs','audīvisset','audīvissēmus','audīvissētis','audīvissent' ),
 
-( 70,'audior','audíris','audítur','audímur','audíminí','audiuntur' ),
-( 71,'audiebar','audiebáris','audiebátur','audiebámur','audiebáminí','audiebantur' ),
-( 72,'audiar','audiéris','audiétur','audiémur','audiéminí','audientur' ),
-( 73,'audítus sum','audítus es','audítus est','audítí sumus','audítí estis','audítí sunt' ),
-( 74,'audítus eram','audítus erás','audítus erat','audítí erámus','audítí erátis','audítí erant' ),
-( 75,'audítus eró','audítus eris','audítus erit','audítí erimus','audítí eritis','audítí erunt' ),
+( 70,'audior','audīris','audītur','audīmur','audīminī','audiuntur' ),
+( 71,'audiebar','audiebāris','audiebātur','audiebāmur','audiebāminī','audiebantur' ),
+( 72,'audiar','audiēris','audiētur','audiēmur','audiēminī','audientur' ),
+( 73,'audītus sum','audītus es','audītus est','audītī sumus','audītī estis','audītī sunt' ),
+( 74,'audītus eram','audītus erās','audītus erat','audītī erāmus','audītī erātis','audītī erant' ),
+( 75,'audītus erō','audītus eris','audītus erit','audītī erimus','audītī eritis','audītī erunt' ),
 
-( 76,'audiar','audiáris','audiátur','audiámur','audiáminí','audiantur' ),
-( 77,'audírer','audíréris','audírétur','audírémur','audíréminí','audíréntur'),
-( 78,'audítus sim','audítus sís','audítus sit','audítí símus','audítí sítis','audítí sint' ),
-( 79,'audítus essem','audítus essés','audítus esset','audítí essémus','audítí essétis','audítí essent' )
+( 76,'audiar','audiāris','audiātur','audiāmur','audiāminī','audiantur' ),
+( 77,'audīrer','audīrēris','audīrētur','audīrēmur','audīrēminī','audīrēntur'),
+( 78,'audītus sim','audītus sīs','audītus sit','audītī sīmus','audītī sītis','audītī sint' ),
+( 79,'audītus essem','audītus essēs','audītus esset','audītī essēmus','audītī essētis','audītī essent' )
 ;
 
 
@@ -338,44 +338,44 @@ INSERT INTO subjuntivos VALUES
 -- INSERÇÃO DE INFINITIVOS (ativos e passivos)
 
 INSERT INTO infinitivos VALUES
-( 0,'a','amáre','amávisse','amátúrum esse' ),
-( 1,'p','amárí','amátum esse','amátum írí' ),
+( 0,'a','amāre','amāvisse','amātūrum esse' ),
+( 1,'p','amārī','amātum esse','amātum īrī' ),
 
-( 2,'a','monére', 'monuisse', 'monitúrum esse' ),
-( 3,'p','monérí','monitum esse','monitum írí' ),
+( 2,'a','monēre', 'monuisse', 'monitūrum esse' ),
+( 3,'p','monērī','monitum esse','monitum īrī' ),
 
-( 4,'a','legere', 'légisse', 'léctúrum esse' ),
-( 5,'p','legí','léctum esse','léctum írí'),
+( 4,'a','legere', 'lēgisse', 'lēctūrum esse' ),
+( 5,'p','legī','lēctum esse','lēctum īrī'),
 
-( 6,'a','audíre','audívisse','audítúrum esse'),
-( 7,'p','audírí','audítum esse','audítum írí');
+( 6,'a','audīre','audīvisse','audītūrum esse'),
+( 7,'p','audīrī','audītum esse','audītum īrī');
 
 
 
 -- vários pre-inseridos
 INSERT INTO imperativos VALUES
-( 0, 'amá', 'amátó', 'amáte', 'amátóte' ),
-( 1, 'moné','monétó','monéte','monétóte'),
-( 2, 'lege','legitó','legite','legitóte' ),
-( 3, 'audí','audító','audíte','audítóte');
+( 0, 'amā', 'amātō', 'amāte', 'amātōte' ),
+( 1, 'monē','monētō','monēte','monētōte'),
+( 2, 'lege','legitō','legite','legitōte' ),
+( 3, 'audī','audītō','audīte','audītōte');
 
 INSERT INTO participios VALUES
-( 0, 'amáns','amátúrus','amátus' ),
-( 1, 'monéns','monitúrus','monitus' ),
-( 2, 'legéns','léctúrus','léctus' ),
-( 3, 'audiéns','audítúrus','audítus' );
+( 0, 'amāns','amātūrus','amātus' ),
+( 1, 'monēns','monitūrus','monitus' ),
+( 2, 'legēns','lēctūrus','lēctus' ),
+( 3, 'audiēns','audītūrus','audītus' );
 
 INSERT INTO supinos VALUES
-( 0, 'amátum', 'amátú' ),
-( 1, 'monitum', 'monitú' ),
-( 2, 'léctum', 'léctú' ),
-( 3, 'audítum', 'audítú' );
+( 0, 'amātum', 'amātū' ),
+( 1, 'monitum', 'monitū' ),
+( 2, 'lēctum', 'lēctū' ),
+( 3, 'audītum', 'audītū' );
 
 INSERT INTO gerundios VALUES
-( 0, 'amandum','amandí','amandó'),
-( 1, 'monendum','monendí','monendó'),
-( 2, 'legendum','legendí','lengendó'),
-( 3, 'audiendum','audiendí','audiendó');
+( 0, 'amandum','amandī','amandō'),
+( 1, 'monendum','monendī','monendō'),
+( 2, 'legendum','legendī','lengendō'),
+( 3, 'audiendum','audiendī','audiendō');
 
 INSERT INTO gerundivos VALUES
 ( 0, 'amandus' ),
@@ -401,9 +401,9 @@ INSERT INTO passiva VALUES
 
 -- (caracteristica,conjugacao,ativaFK,passivaFK)
 INSERT INTO verbos VALUES
-( 0, 'amáre','regular',1 ,0,0 ),
-( 1, 'monére','regular',2 ,1,1 ),
+( 0, 'amāre','regular',1 ,0,0 ),
+( 1, 'monēre','regular',2 ,1,1 ),
 ( 2, 'legere','regular',3 ,2,2 ),
-( 3, 'audíre','regular',4 ,3,3 )
+( 3, 'audīre','regular',4 ,3,3 )
 ;
 

@@ -39,7 +39,7 @@ export default class Substantivo
 
   public async todosOsSubstantivos(): Promise<void>
   {
-    this.sqlite.all("SELECT noms, declinacao FROM substantivos", (err, linha)=>
+    this.sqlite.all("SELECT noms, declinacao, genero FROM substantivos", (err, linha)=>
     {
       if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err.message ) );
       else this.tratadorConsultaSql.tratarTipoConsultaSql( linha );
