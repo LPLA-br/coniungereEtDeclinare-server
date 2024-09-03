@@ -16,6 +16,8 @@ import * as sqlite3 from "sqlite3";
 import { IFormatadorErro } from "../interfaces/FormatadorErro";
 import ITratadorConsulta from "../interfaces/TratadorConsulta";
 
+import { consultas } from "../types/consultas";
+
 export default class Verbos
 {
 
@@ -43,57 +45,48 @@ export default class Verbos
     this.formatadorErro = formatadorErro;
     this.tratadorConsulta = tratadorConsulta;
 
-    this.consultas = {
+    this.consultas =
+    {
+      indicativoAtivoPresente:        "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.praesens = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoAtivoImperfeito:      "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.imperfectum       = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoAtivoPerfeito:        "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.perfectum           = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoAtivoMaisQuePerfeito: "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.plusquamperfectum         = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoAtivoFuturoPerfeito:  "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.futurumperfectum = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoAtivoFuturo:          "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN indicativos ON ativa.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.futurum  = pessoas.id WHERE verbos.infinitivo = ?;",
+
+      subjuntivoAtivoPresente:        "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.praesens = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoAtivoImperfeito:      "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.imperfectum = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoAtivoPerfeito:        "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoAtivoMaisQuePerfeito: "SELECT pessoas.* FROM verbos INNER JOIN ativa ON verbos.voz_ativa = ativa.id INNER JOIN subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.plusquamperfectum = pessoas.id WHERE verbos.infinitivo = ?",
+     
+      indicativoPassivoPresente:        "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.praesens = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoPassivoImperfeito:      "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.imperfectum = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoPassivoPerfeito:        "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.perfectum = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoPassivoMaisQuePerfeito: "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.plusquamperfectum = pessoas.id WHERE verbos.infinitivo = ?;",
+      indicativoPassivoFuturoPerfeito:  "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.futurumperfectum = pessoas.id WHERE verbos.infinitivo = ?;" ,
+      indicativoPassivoFuturo:          "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN indicativos ON passiva.indicativo = indicativos.id INNER JOIN pessoas ON indicativos.futurum = pessoas.id WHERE verbos.infinitivo = ?;",
+
+      subjuntivoPassivoPresente:        "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.praesens = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoPassivoImperfeito:      "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.imperfectum = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoPassivoPerfeito:        "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id WHERE verbos.infinitivo = ?",
+      subjuntivoPassivoMaisQuePerfeito: "SELECT pessoas.* FROM verbos INNER JOIN passiva ON verbos.voz_passiva = passiva.id INNER JOIN subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN pessoas ON subjuntivos.praesens = pessoas.id OR subjuntivos.imperfectum = pessoas.id OR subjuntivos.perfectum = pessoas.id OR subjuntivos.plusquamperfectum = pessoas.id WHERE verbos.infinitivo = ?",
+
       infinitivosAtivos: "SELECT id, praesens, voz FROM infinitivos",
-      indicativosAtivos: "SELECT pessoas.* FROM verbos INNER JOIN \
-    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
-    indicativos ON ativa.indicativo = indicativos.id INNER JOIN \
-    pessoas ON indicativos.praesens = pessoas.id OR indicativos.imperfectum = pessoas.id OR \
-    indicativos.futurum = pessoas.id OR indicativos.perfectum = pessoas.id OR \
-    indicativos.plusquamperfectum = pessoas.id OR indicativos.futurumperfectum = pessoas.id \
-    WHERE verbos.infinitivo = ?",
-      subjuntivosAtivos: "SELECT pessoas.* FROM verbos INNER JOIN \
-    ativa ON verbos.voz_ativa = ativa.id INNER JOIN \
-    subjuntivos ON ativa.subjuntivo = subjuntivos.id INNER JOIN \
-    pessoas ON subjuntivos.praesens = pessoas.id \
-    OR subjuntivos.imperfectum = pessoas.id \
-    OR subjuntivos.perfectum = pessoas.id \
-    OR subjuntivos.plusquamperfectum = pessoas.id \
-    WHERE verbos.infinitivo = ?",
-      indicativosPassivos: "SELECT pessoas.* FROM verbos INNER JOIN \
-    passiva ON verbos.voz_passiva = passiva.id INNER JOIN \
-    indicativos ON passiva.indicativo = indicativos.id INNER JOIN \
-    pessoas ON indicativos.praesens = pessoas.id OR \
-    indicativos.imperfectum = pessoas.id OR \
-    indicativos.futurum = pessoas.id OR \
-    indicativos.perfectum = pessoas.id OR \
-    indicativos.plusquamperfectum = pessoas.id OR \
-    indicativos.futurumperfectum = pessoas.id \
-    WHERE verbos.infinitivo = ?",
-      subjuntivosPassivos: "SELECT pessoas.* FROM verbos INNER JOIN \
-    passiva ON verbos.voz_passiva = passiva.id INNER JOIN \
-    subjuntivos ON passiva.subjuntivo = subjuntivos.id INNER JOIN \
-    pessoas ON subjuntivos.praesens = pessoas.id OR \
-    subjuntivos.imperfectum = pessoas.id OR \
-    subjuntivos.perfectum = pessoas.id OR \
-    subjuntivos.plusquamperfectum = pessoas.id \
-    WHERE verbos.infinitivo = 'amare'",
-      imperativos: "SELECT imperativos.* FROM verbos INNER JOIN \
-    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
-    imperativos ON imperativos.id = ativa.imperativo WHERE verbos.infinitivo = ?",
-      infinitivos: "SELECT infinitivos.* FROM verbos INNER JOIN \
-    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
-    infinitivos ON infinitivos.id = ativa.infinitivo WHERE verbos.infinitivo = ?",
-      participios: "SELECT participios.* FROM verbos INNER JOIN \
-    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
-    participios ON participios.id = ativa.participio WHERE verbos.infinitivo = ?",
-      gerundios: "SELECT gerundios.* FROM verbos INNER JOIN \
-    ativa ON ativa.id = verbos.voz_ativa INNER JOIN \
-    gerundios ON gerundios.id = ativa.gerundio WHERE verbos.infinitivo = ?",
-      gerundivos: "SELECT gerundivos.* FROM verbos INNER JOIN \
-    passiva ON passiva.id = verbos.voz_passiva INNER JOIN \
-    gerundivos ON gerundivos.id = passiva.gerundivo WHERE verbos.infinitivo = ?"
-    };
+      imperativos: "SELECT imperativos.* FROM verbos INNER JOIN ativa ON ativa.id = verbos.voz_ativa INNER JOIN imperativos ON imperativos.id = ativa.imperativo WHERE verbos.infinitivo = ?",
+      infinitivos: "SELECT infinitivos.* FROM verbos INNER JOIN ativa ON ativa.id = verbos.voz_ativa INNER JOIN infinitivos ON infinitivos.id = ativa.infinitivo WHERE verbos.infinitivo = ?",
+      participios: "SELECT participios.* FROM verbos INNER JOIN ativa ON ativa.id = verbos.voz_ativa INNER JOIN participios ON participios.id = ativa.participio WHERE verbos.infinitivo = ?",
+      gerundios: "SELECT gerundios.* FROM verbos INNER JOIN ativa ON ativa.id = verbos.voz_ativa INNER JOIN gerundios ON gerundios.id = ativa.gerundio WHERE verbos.infinitivo = ?",
+      gerundivos: "SELECT gerundivos.* FROM verbos INNER JOIN passiva ON passiva.id = verbos.voz_passiva INNER JOIN gerundivos ON gerundivos.id = passiva.gerundivo WHERE verbos.infinitivo = ?"
+    }; 
+  }
+
+  public async obterTempoVerbalPorRegistroDeConsultas( modoVozTempo: consultas ): Promise<void>
+  {
+    this.sqlite.all( this.consultas[modoVozTempo], this.httpRequest.query.infinitivo, (err, linhas)=>
+    {
+      if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err ) );
+      else this.tratadorConsulta.tratarTipoConsultaSql( linhas );
+    });
   }
 
   public async obterInfinitivosAtivos(): Promise<void>
@@ -108,46 +101,6 @@ export default class Verbos
     });
   }
 
-  public async obterIndicativoAtivo(): Promise<void>
-  {
-    this.sqlite.all( this.consultas.indicativosAtivos,
-                    this.httpRequest.query.infinitivo, (err, linhas)=>
-    {
-      if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err ) );
-      else this.tratadorConsulta.tratarTipoConsultaSql( linhas );
-    });
-  }
-
-  public async obterSubjuntivoAtivo(): Promise<void>
-  {
-    this.sqlite.all( this.consultas.subjuntivosAtivos,
-                    this.httpRequest.query.infinitivo, (err, linhas)=>
-    {
-      if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err ) );
-      else this.tratadorConsulta.tratarTipoConsultaSql( linhas );
-    });
-  }
-
-  public async obterIndicativoPassivo(): Promise<void>
-  {
-    this.sqlite.all( this.consultas.indicativosPassivos,
-                    this.httpRequest.query.infinitivo, (err, linhas)=>
-    {
-      if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err ) );
-      else this.tratadorConsulta.tratarTipoConsultaSql( linhas );
-    });
-  }
-
-  public async obterSubjuntivoPassivo(): Promise<void>
-  {
-    this.sqlite.all( this.consultas.indicativosPassivos,
-                    this.httpRequest.query.infinitivo, (err, linhas)=>
-    {
-      if ( err ) this.httpResponse.json( this.formatadorErro.obterStringJSONDoErro( 500, err ) );
-      else this.tratadorConsulta.tratarTipoConsultaSql( linhas );
-    });
-  }
- 
   public async obterImperativo(): Promise<void>
   {
     this.sqlite.all( this.consultas.imperativos,

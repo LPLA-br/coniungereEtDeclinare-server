@@ -4,37 +4,27 @@ import Verbos from "../controllers/verbos";
 import FormatadorErro from "../utilitarios/FormatadorErro";
 import TratadorConsulta from "../utilitarios/TratadorConsulta";
 import verbosQuery from "../middlewares/verbosQuery";
+import { CONSULTAS } from "../types/consultas";
 
 const verbos = Router();
+
+( ()=>
+  {
+    for ( let i = 0; i < CONSULTAS.length; i++)
+    {
+      verbos.get(`/${CONSULTAS[i].toLowerCase()}`, verbosQuery, ( req: Request, res: Response )=>
+      {
+        const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
+        verbosController.obterTempoVerbalPorRegistroDeConsultas( CONSULTAS[i] );
+      });
+    }
+  }
+)();
 
 verbos.get("/infinitivos", ( req: Request, res: Response )=>
 {
   const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
   verbosController.obterInfinitivosAtivos();
-});
-
-verbos.get("/indicativoativo", verbosQuery, ( req: Request, res: Response )=>
-{
-  const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
-  verbosController.obterIndicativoAtivo();
-});
-
-verbos.get("/subjuntivoativo", verbosQuery, ( req: Request, res: Response )=>
-{
-  const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
-  verbosController.obterSubjuntivoAtivo();
-});
-
-verbos.get("/indicativopassivo", verbosQuery, ( req: Request, res: Response )=>
-{
-  const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
-  verbosController.obterIndicativoPassivo();
-});
-
-verbos.get("/subjuntivopassivo", verbosQuery, ( req: Request, res: Response )=>
-{
-  const verbosController = new Verbos( req, res, new TratadorConsulta(req, res), new FormatadorErro() );
-  verbosController.obterSubjuntivoPassivo();
 });
 
 verbos.get("/imperativo", verbosQuery, ( req: Request, res: Response )=>
