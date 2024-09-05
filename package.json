@@ -9,13 +9,20 @@
   "author": "LPLA-br",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.24.7",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/sqlite3": "^3.1.11",
+    "babel-jest": "^29.7.0",
     "express": "^4.19.2",
+    "jest": "^29.7.0",
     "sqlite3": "^5.1.7",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.4.5"
   },
   "optionalDependencies": {
-    "axios": "^1.7.2"
+    "axios": "^1.7.7"
   }
 }
